@@ -1,29 +1,19 @@
-public class TrafficSignalAnalyzer {
-    public static void findLongestStreak(String signalLog) {
-        if (signalLog == null || signalLog.length() == 0) return;
-
-        char maxChar = signalLog.charAt(0);
-        int maxStreak = 1;
-        char currentChar = signalLog.charAt(0);
-        int currentStreak = 1;
-
-        for (int i = 1; i < signalLog.length(); i++) {
-            if (signalLog.charAt(i) == currentChar) {
-                currentStreak++;
-            } else {
-                if (currentStreak > maxStreak) {
-                    maxStreak = currentStreak;
-                    maxChar = currentChar;
-                }
-                currentChar = signalLog.charAt(i);
-                currentStreak = 1;
-            }
-        }
-        if (currentStreak > maxStreak) {
-            maxStreak = currentStreak;
-            maxChar = currentChar;
-        }
-
-        System.out.println("Longest Streak: '" + maxChar + "' repeated " + maxStreak + " times");
-    }
+public class TrafficStreakAnalyzer {
+public static void findLongestStreak(String signalLog) {
+int max=1;
+int current=1;
+char maxColor=signalLog.charAt(0);
+for(int i=1;i<signalLog.length();i++){
+if(signalLog.charAt(i)==signalLog.charAt(i-1)) current++;
+else current=1;
+if(current>max){
+max=current;
+maxColor=signalLog.charAt(i);
+}
+}
+System.out.println("Longest Streak: '"+maxColor+"' repeated "+max+" times");
+}
+public static void main(String[] args) {
+findLongestStreak("RRGGGYRR");
+}
 }
