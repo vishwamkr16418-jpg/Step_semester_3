@@ -1,13 +1,13 @@
-public class ProductInventoryParser {
-    public static void parseInventoryRecord(String csvLine) {
-        String[] fields = csvLine.split(",");
-        if (fields.length != 3) {
-            System.out.println("Invalid Record");
-        } else {
-            String product = fields[0].trim();
-            String sku = fields[1].trim();
-            String qty = fields[2].trim();
-            System.out.println("Product: " + product + " | SKU: " + sku + " | Qty: " + qty);
-        }
-    }
+public class InventoryCSVParser {
+public static void parseInventoryRecord(String csvLine) {
+String[] data=csvLine.split(",");
+if(data.length!=3){
+System.out.println("Invalid Record");
+return;
+}
+System.out.println("Product: "+data[0]+" | SKU: "+data[1]+" | Qty: "+data[2]);
+}
+public static void main(String[] args) {
+parseInventoryRecord("Wireless Mouse,WM-2201,150");
+}
 }
